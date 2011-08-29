@@ -19,7 +19,7 @@
    in front of course titles which are in archive categories
    
    (c)2010-2011 by Jan Rocho <jan@rocho.eu>
-   v1.2
+   v1.2.1
    
    Call this script:
    
@@ -143,9 +143,9 @@ function getCourses($debug=0)
 function updateCourse($id,$title)
 {
 
-        global $archive_string;
+    global $archive_string;
                    
-	$sql = "update object_data set title='[".$archive_string."] ".$title."' where obj_id=".$id;
+	$sql = "update object_data set title='[".sqlClean($archive_string)."] ".sqlClean($title)."' where obj_id=".$id;
 	$query = mysql_query($sql);
 	if(mysql_error())
 	{
